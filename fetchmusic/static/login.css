@@ -1,0 +1,50 @@
+* {
+margin: 0;
+padding: 0;
+}
+
+body {
+background-attachment: fixed;
+background-image: url(loginback.jpg);
+background-repeat: no-repeat;
+background-position: bottom right;
+}
+
+#form-box {
+text-align: center;
+margin-top: 200px;
+}
+
+.login-logo {
+font-size: 100px;
+font-family: ChunkFive;
+}
+
+input.formfield {
+width: 200px;
+padding: 4px 4px 4px;
+font-size: 16px;
+vertical-align: middle;
+font-family: "Helvetica Neue";
+border: 1px solid #CCC;
+-webkit-border-radius: 2px;
+}
+
+input[type="password"] {
+-webkit-text-security: disc;
+}
+
+
+#request-box {
+padding-top: 20px;
+}
+
+a.shy {
+margin-top: 10px;
+color: gray;
+}
+
+a.shy:hover {
+color: #08C;
+text-decoration: underline;
+}
