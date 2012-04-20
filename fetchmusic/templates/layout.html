@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <title>Fetch - Music</title>
+    <link rel="stylesheet" type="text/css"
+          href="{{ url_for('static', filename='fetch.css') }}"/>
+    <script type="text/javascript"
+            src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='fetch.js') }}"></script>
+  </head>
+  
+  <body>
+    <div class="container">
+      <header>
+          <div class="headercell">
+        <a class="logo" href="{{ url_for('home') }}">Fetch</a>
+        <form class="searchwell" action="music" method="GET">
+          <input name="artist" type="text" class="searchbox"
+                 placeholder="Search Artist...">
+          <button type="submit" class="btn">Search</button>
+        </form>
+        <ul class="nav">
+          <li>
+            {% if name=="home" %}
+            <a href="{{ url_for('home') }}" class="active">Home</a>
+            {% else %}
+            <a href="{{ url_for('home') }}">Home</a>
+            {% endif %}
+          </li>
+          <li>
+            {% if name=="music" %}
+            <a href="{{ url_for('music') }}" class="active">Music</a>
+            {% else %}
+            <a href="{{ url_for('music') }}">Music</a>
+            {% endif %}
+          </li>
+        </ul>
+          </div>
+          <div class="headercell">
+        <div class="user">
+          <span class="svg_wrapper"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" space="preserve">
+              <path d="M98.574,76.99c-2.116-10.92-31.236-9.759-38.254-18.311c-1.48-1.805-1.48-1.805-0.488-8.507
+                       c1.693-7.502,3.229-2.846,5.65-17.809C67.518,19.798,63.177,9,50,9S32.483,19.798,34.517,32.365
+                       c2.422,14.963,3.956,10.307,5.651,17.809c0.992,6.702,0.992,6.702-0.488,8.507C32.662,67.232,3.542,66.071,1.426,76.99
+                       C1.175,78.282,0,85.434,0,85.434h100C100,85.434,98.825,78.282,98.574,76.99z"></path>
+            </svg>
+          </span>
+          <a class="userlink">{{ username }}</a>
+        </div>
+        </div>
+      </header>
+
+      <div class="main">
+        {% block main %}
+        {% endblock %}
+      </div>
+    </div>
+  </body>
+</html>
+            

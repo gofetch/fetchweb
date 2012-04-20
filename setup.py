@@ -15,5 +15,8 @@ setup(
     author_email='JubBoy333+fetch@gmail.com',
     url='https://github.com/gofetch/fetchmusic',
     license=license,
-    packages=find_packages(exclude('tests', 'docs'))
+    packages=['fetchmusic'],
+    include_package_data=True,
+    zip_safe=False,
+    install_requires=['Flask']
 )
