@@ -1,0 +1,2 @@
+recursive-include fetchmusic/templates *
+recursive-include fetchmusic/static *
