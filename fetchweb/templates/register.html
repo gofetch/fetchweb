@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block main %}
+{% autoescape true %}
+
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul class=flashes>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+    <div id="form-box">
+      <a class="logo" href="/">Fetch</a>
+      <form action method="POST">
+        <input name="email" type="text" class="formfield"
+               placeholder="Enter Email..."><br><br>
+        <input name="username" type="text" class="formfield"
+               placeholder="Enter Name..."><br><br>
+        <input name="password" type="password" class="formfield" 
+               placeholder="Enter Password..."><br><br>
+        <input name="password2" type="password" class="formfield" 
+               placeholder="Enter Password Again..."><br><br>
+        <button type="submit" class="btn">Request Account</button>
+      </form>
+    </div>
+
+{% endautoescape %}
+{% endblock %}

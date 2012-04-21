@@ -7,15 +7,15 @@ with open('LICENSE') as f:
     license = f.read()
 
 setup(
-    name='fetchmusic',
+    name='fetchweb',
     version='0.0.1',
-    description='Flask app for Fetch Music',
+    description='Web Frontend for Fetch',
     long_description=readme,
     author='Fetch',
     author_email='JubBoy333+fetch@gmail.com',
-    url='https://github.com/gofetch/fetchmusic',
+    url='https://github.com/gofetch/fetchweb',
     license=license,
-    packages=['fetchmusic'],
+    packages=['fetchweb'],
     include_package_data=True,
     zip_safe=False,
     install_requires=['Flask']

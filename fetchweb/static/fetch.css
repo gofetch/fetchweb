@@ -1,0 +1,102 @@
+* {
+margin: 0;
+padding: 0;
+}
+
+body {
+font: 14px/22px "Helvetica Neue",Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+div .headercell {
+display: table-cell;
+vertical-align: middle;
+padding: 0px 20px;
+}
+
+header {
+height: 60px;
+display:table;
+width: 100%;
+margin: 0 auto;
+
+background-image: linear-gradient(bottom, rgb(20,20,20) 4%, rgb(69,69,69) 100%);
+background-image: -o-linear-gradient(bottom, rgb(20,20,20) 4%, rgb(69,69,69) 100%);
+background-image: -moz-linear-gradient(bottom, rgb(20,20,20) 4%, rgb(69,69,69) 100%);
+background-image: -webkit-linear-gradient(bottom, rgb(20,20,20) 4%, rgb(69,69,69) 100%);
+background-image: -ms-linear-gradient(bottom, rgb(20,20,20) 4%, rgb(69,69,69) 100%);
+
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.04, rgb(20,20,20)),
+	color-stop(1, rgb(69,69,69))
+);
+
+}
+
+.logo {
+color: #4190CA;
+font-size: 40px;
+display: table-cell;
+vertical-align: middle;
+padding: 0 25px;
+font-weight: 800;
+text-decoration: none;
+font-family: Chunk5;
+}
+
+
+.nav {
+display: table-cell;
+vertical-align: middle;
+}
+
+.nav li {
+float:left;
+}
+
+header a {
+font-size: 15px;
+padding: 10px;
+margin: 0 10px;
+text-decoration: none;
+font-weight: 400;
+color: #ECECEC;
+}
+
+header a .visited {
+text-decoration: none;
+}
+
+header a:hover {
+color: #00afe9;
+}
+
+.nav .active, .nav .active:hover {
+color: white;
+background-color: #08C;
+}
+
+
+.user{
+float: right;
+}
+
+.error {
+text-align: center;
+margin-top: 20px;
+padding: 10px;
+background-color: whiteSmoke;
+color: orange;
+cursor: default;
+font-weight: bold;
+font-size: 15px;
+}
+
+.container {
+min-width: 900px;
+width: 100%;
+margin: 0 auto;
+display:block;
+}
