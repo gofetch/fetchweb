@@ -5,25 +5,30 @@
 
 {% with messages = get_flashed_messages() %}
 {% if messages %}
-<ul class=flashes>
+<div class="small rounded shadow flashes">
+  <ul>
     {% for message in messages %}
     <li>{{ message }}</li>
     {% endfor %}
-</ul>
+  </ul>
+</div>    
 {% endif %}
 {% endwith %}
 
-<div id="form-box">
-    <a class="login-logo" href="/">Fetch</a>
+<div class="headingblock">
+    <div class="medium left">Login</div>
+</div>
+<div class="clear"></div>
+<div class="rounded shadow inputblock">
     <form action method="POST">
-        <input name="email" type="text" class="formfield"
-            placeholder="Enter Email...">
-            <input name="password" type="password" class="formfield" 
-                placeholder="Enter Password...">
-                <button type="submit" class="btn">Login</button>
-                </form>
+        <div class="small left">Username</div>
+        <input tabindex="10" name="email" type="text" class="large">
+        <div class="small left">Password</div>
+        <div class="right"><a href="">Forgot?</a></div>
+        <input tabindex="20" name="password" type="password" class="large">
+        <button tabindex="30" type="submit" class="button">Login</button>
+        </form>
     <br>
-    <a href="/register" class="shy">Request an account</a>
 </div>
 
 {% endautoescape %}

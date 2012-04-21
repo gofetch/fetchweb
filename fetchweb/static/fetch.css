@@ -5,6 +5,101 @@ padding: 0;
 
 body {
 font: 14px/22px "Helvetica Neue",Helvetica Neue,Helvetica,Arial,sans-serif;
+background-color: whiteSmoke;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:visited {
+    color: black;
+    text-decoration: none;
+}
+
+input.large {
+font-size: 18px;
+padding: 5px 5px 4px 5px;
+margin: 0 auto 5px auto;
+width: 100%;
+border: 1px solid #B6B6B6;
+background-color: #FCFCFC;
+padding: 5px;
+-moz-box-shadow: inset 0 1px 3px rgba(0,0,0,0.15),0 1px 0 rgba(255,255,255,0.5);
+-webkit-box-shadow: inset 0 1px 3px rgba(0,0,0,0.15),0 1px 0 rgba(255,255,255,0.5);
+box-shadow: inset 0 1px 3px rgba(0,0,0,0.15),0 1px 0 rgba(255,255,255,0.5);
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+}
+
+.button {
+font-family: "Helvetica Neue", Helvetica Neue, Helvetica, Arial, sans-serif;
+color: #686868;
+font-size: 14px;
+font-weight: bold;
+background: #EFEFEF url("/unity/img/buttons/buttonbg.png") repeat-x;
+padding: 4px 8px 4px 8px;
+border: 1px solid #AFAFAF;
+-moz-text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+-webkit-text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+-moz-box-shadow: 0px 1px 3px rgba(0,0,0,0.15);
+-webkit-box-shadow: 0px 1px 3px rgba(0,0,0,0.15);
+box-shadow: 0px 1px 3px rgba(0,0,0,0.15);
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+cursor: pointer;
+-webkit-transition-duration: 0.3s;
+-webkit-transition-timing: linear, ease-out;
+-moz-transition-duration: 0.3s;
+-moz-transition-timing: linear, ease-out;
+-ms-transition-duration: 0.3s;
+-ms-transition-timing: linear, ease-out;
+transition-duration: 0.3s;
+transition-timing: linear, ease-out;
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+-o-user-select: none;
+user-select: none;
+}
+
+.left {
+float: left;
+}
+
+.right {
+float: right
+}
+
+.table {
+display: table
+}
+
+.large {
+font-size: 40px;
+}
+
+.medium {
+font-size: 22px;
+}
+
+.small {
+font-size: 16px;
+}
+
+.clear {
+float: none;
+clear: both;
+height: 0;
+width: 0;
+margin: 0;
+padding: 0;
 }
 
 div .headercell {
@@ -13,12 +108,22 @@ vertical-align: middle;
 padding: 0px 20px;
 }
 
-header {
-height: 60px;
-display:table;
-width: 100%;
-margin: 0 auto;
+.flashes {
+margin: 15px auto 0px auto;
+padding: 5px 30px;
+width: 540px;
+background-color: white;
+text-align: center;
+}
 
+.flashes li {
+list-style-type: none;
+width: auto;
+display: block;
+}
+
+header {
+margin: 0 auto 5px auto;
 background-image: linear-gradient(bottom, rgb(20,20,20) 4%, rgb(69,69,69) 100%);
 background-image: -o-linear-gradient(bottom, rgb(20,20,20) 4%, rgb(69,69,69) 100%);
 background-image: -moz-linear-gradient(bottom, rgb(20,20,20) 4%, rgb(69,69,69) 100%);
@@ -33,10 +138,22 @@ background-image: -webkit-gradient(
 	color-stop(1, rgb(69,69,69))
 );
 
+-moz-box-shadow: 0 0 2px 2px #888;
+-webkit-box-shadow: 0 0 2px 2px #888;
+box-shadow: 0 0 2px 2px #888;
+}
+
+.wrapper {
+width: 900px;
+margin: 0 auto 5px auto;
+}
+
+.height60 {
+height: 60px;
 }
 
 .logo {
-color: #4190CA;
+color: white;
 font-size: 40px;
 display: table-cell;
 vertical-align: middle;
@@ -59,19 +176,18 @@ float:left;
 header a {
 font-size: 15px;
 padding: 10px;
-margin: 0 10px;
+margin: 0 10px 10px 10px;
 text-decoration: none;
 font-weight: 400;
-color: #ECECEC;
-
+color: #ECECEC; 
 -webkit-transition-property: color;
 -webkit-transition-duration: 0.1s, 0.1s;
- -webkit-transition-timing-function: linear, ease-in;
-
+-webkit-transition-timing-function: linear, ease-in;
 }
 
-header a .visited {
+header a:visited {
 text-decoration: none;
+color: #ECECEC; 
 }
 
 header a:hover {
@@ -88,15 +204,25 @@ background-color: #08C;
 float: right;
 }
 
-.error {
-text-align: center;
-margin-top: 20px;
-padding: 10px;
-background-color: whiteSmoke;
-color: orange;
-cursor: default;
-font-weight: bold;
-font-size: 15px;
+.headingblock {
+margin: 20px auto 0 auto;
+display: block;
+width: 600px;
+overflow: hidden;
+height: auto;
+}
+
+.headingblock div {
+    padding: 10px 0;
+    margin: 10px 0;
+}
+
+.inputblock {
+background-color: white;
+padding: 30px;
+width: 540px;
+margin: 5px auto;
+display: block;
 }
 
 .container {
@@ -104,4 +230,16 @@ min-width: 900px;
 width: 100%;
 margin: 0 auto;
 display:block;
+}
+
+.rounded {
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+}
+
+.shadow {
+-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+box-shadow: 0 1px 1px rgba(0,0,0,0.15);
 }

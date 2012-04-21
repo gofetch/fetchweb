@@ -6,41 +6,43 @@
   </head>
   
   <body>
-    <div class="container">
       <header>
-        <div class="headercell">
-        <a class="logo" href="{{url_for('home')}}">Fetch</a>
-        <ul class="nav">
-            <li>
-                <a href="{{url_for('home')}}">My Fetches</a>
-            </li>
-            <li>
-                <a href="{{url_for('music')}}">Music</a>
-            </li>
-            <li>
-                <a href="{{url_for('tv')}}">TV</a>
-            </li>
-            <li>
-                <a href="{{url_for('movies')}}">Movies</a>
-            </li>
-        </ul>
+        <div class="wrapper height60 table">
+          <div class="headercell">
+              <a class="logo" href="{{url_for('home')}}">Fetch</a>
+              <ul class="nav">
+                  <li>
+                      <a href="{{url_for('home')}}">My Fetches</a>
+                  </li>
+                  <li>
+                      <a href="{{url_for('music')}}">Music</a>
+                  </li>
+                  <li>
+                      <a href="{{url_for('tv')}}">TV</a>
+                  </li>
+                  <li>
+                      <a href="{{url_for('movies')}}">Movies</a>
+                  </li>
+              </ul>
           </div>
           <div class="headercell">
-        <div class="user">
-          {% if username is defined %}
-            <a href="{{url_for('logout')}}" class="userlink">Log Out</a>
-            <a href="{{url_for('user')}}" class="userlink">{{username}}</a>
-          {% else %}
-            <a href="{{url_for('login')}}" class="userlink">Log In</a>
-            <a href="{{url_for('register')}}" class="userlink">Register</a>
-          {% endif %}
-        </div>
+              <div class="user">
+                  {% if username is defined %}
+                  <a href="{{url_for('logout')}}" class="userlink">Log Out</a>
+                  <a href="{{url_for('user')}}" class="userlink">{{username}}</a>
+                  {% else %}
+                  <a href="{{url_for('login')}}" class="userlink">Log In</a>
+                  <a href="{{url_for('register')}}" class="userlink">Register</a>
+                  {% endif %}
+              </div>
+          </div>
         </div>
       </header>
-      <div class="main">
+    <div class="container">
+    <div class="wrapper">
         {% block main %}
         {% endblock %}
-      </div>
+    </div>
     </div>
   </body>
 </html>
