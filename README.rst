@@ -15,10 +15,7 @@ Export the variable FETCHWEB_SETTINGS::
 
   export FETCHWEB_SETTINGS=/path/to/configuration.cfg
 
-If needed, initialize the database by calling reload_db()::
-
-  from fetchweb.database import reload_db()
-  reload_db()
+If needed, initialize the database by running schema.sql
 
 Serve the application from python or other server::
 
