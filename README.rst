@@ -8,12 +8,17 @@ First, install the fetchweb package and its dependencies.
 
 Create a configuration.cfg defining the two following values::
 
-  DATABASE_PATH = '/users/Isaac/Documents/Programming/fetchweb/fetchweb.db'
+  DATABASE_PATH = '/path/to/fetchweb.db'
   SECRET_KEY = 'DEVELOPMENT KEY'
 
 Export the variable FETCHWEB_SETTINGS::
 
   export FETCHWEB_SETTINGS=/path/to/configuration.cfg
+
+If needed, initialize the database by calling reload_db()::
+
+  from fetchweb.database import reload_db()
+  reload_db()
 
 Serve the application from python or other server::
 
