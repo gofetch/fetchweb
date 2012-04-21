@@ -40,8 +40,20 @@
       </header>
     <div class="container">
     <div class="wrapper">
-        {% block main %}
-        {% endblock %}
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      <div class="small rounded shadow flashes">
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+      </div>    
+      {% endif %}
+      {% endwith %}
+        
+    {% block main %}
+    {% endblock %}
     </div>
     </div>
   </body>

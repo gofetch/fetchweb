@@ -2,33 +2,19 @@
 {% block main %}
 {% autoescape true %}
 
-
-{% with messages = get_flashed_messages() %}
-{% if messages %}
-<div class="small rounded shadow flashes">
-  <ul>
-    {% for message in messages %}
-    <li>{{ message }}</li>
-    {% endfor %}
-  </ul>
-</div>    
-{% endif %}
-{% endwith %}
-
 <div class="headingblock">
     <div class="medium left">Login</div>
 </div>
 <div class="clear"></div>
 <div class="rounded shadow inputblock">
     <form action method="POST">
-        <div class="small left">Username</div>
+        <div class="small left">Email</div>
         <input tabindex="10" name="email" type="text" class="large">
-        <div class="small left">Password</div>
-        <div class="right"><a href="">Forgot?</a></div>
-        <input tabindex="20" name="password" type="password" class="large">
-        <button tabindex="30" type="submit" class="button">Login</button>
-        </form>
-    <br>
+            <div class="small left">Password</div>
+            <div class="right"><a href="">Forgot?</a></div>
+            <input tabindex="20" name="password" type="password" class="large">
+                <button tabindex="30" type="submit" class="button">Login</button>
+                </form>
 </div>
 
 {% endautoescape %}

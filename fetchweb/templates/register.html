@@ -3,30 +3,24 @@
 {% autoescape true %}
 
 
-{% with messages = get_flashed_messages() %}
-{% if messages %}
-<ul class=flashes>
-    {% for message in messages %}
-    <li>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
-{% endwith %}
 
-    <div id="form-box">
-      <a class="logo" href="/">Fetch</a>
-      <form action method="POST">
-        <input name="email" type="text" class="formfield"
-               placeholder="Enter Email..."><br><br>
-        <input name="username" type="text" class="formfield"
-               placeholder="Enter Name..."><br><br>
-        <input name="password" type="password" class="formfield" 
-               placeholder="Enter Password..."><br><br>
-        <input name="password2" type="password" class="formfield" 
-               placeholder="Enter Password Again..."><br><br>
-        <button type="submit" class="btn">Request Account</button>
-      </form>
-    </div>
+<div class="headingblock">
+    <div class="medium left">Register</div>
+</div>
+<div class="clear"></div>
+<div class="rounded shadow inputblock">
+    <form action method="POST">
+        <div class="small left">Email</div>
+        <input tabindex="10" name="email" type="text" class="large">
+        <div class="small left">Name</div>
+        <input tabindex="20" name="username" type="text" class="large">
+        <div class="small left">Password</div>
+        <input tabindex="30" name="password" type="password" class="large">
+        <div class="small left">Repeat Password</div>
+        <input tabindex="40" name="password2" type="password" class="large">
+        <button tabindex="50" type="submit" class="button">Login</button>
+    </form>
+</div>
 
 {% endautoescape %}
 {% endblock %}
