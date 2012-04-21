@@ -69,6 +69,7 @@ def register():
                          [request.form['username'], request.form['email'],
                           generate_password_hash(request.form['password'])])
             g.db.commit()
+            flash("Successfully requested an account");
             return redirect(url_for('login'))
     return render_template('register.html')
 
