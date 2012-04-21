@@ -63,6 +63,11 @@ margin: 0 10px;
 text-decoration: none;
 font-weight: 400;
 color: #ECECEC;
+
+-webkit-transition-property: color;
+-webkit-transition-duration: 0.1s, 0.1s;
+ -webkit-transition-timing-function: linear, ease-in;
+
 }
 
 header a .visited {
