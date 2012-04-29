@@ -61,6 +61,42 @@ to quick from the current virtualenv::
   deactivate
 
 
+Mocking Framework
+=================
+
+We use unittest and pymox::
+
+  pip install mox
+
+
+Zeromq and zerorpc-python
+=========================
+
+install dependencies::
+
+  sudo apt-get install uuid-dev libevent-dev
+
+get zeromq release source::
+
+  wget http://www.zeromq.org/local--files/area:download/zeromq-2.0.10.tar.gz
+
+unpack the tar-gz archive::
+
+  tar -xvf zeromq-2.0.10.tar.gz
+
+run ./configure followed by make/install::
+
+  ./configure
+  make
+  sudo make install
+
+now zeromq libraries are installed, time for zerorpc::
+
+  pip install zerorpc
+
+
+
+
 
 
 
