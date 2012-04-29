@@ -10,9 +10,16 @@
   {% else %}
   <li>
   {% endif %}
-    <a href="{{ url_for('home', category='music') }}">Music</a>
+    <a href="{{ url_for('locker', category='music') }}">Music</a>
   </li>
 
+  {% if category == 'pending' %}
+  <li class="active">
+  {% else %}
+  <li>
+  {% endif %}
+    <a href="{{ url_for('locker', category='pending') }}">Pending Fetches</a>
+  </li>
 </ul>
 </div>
 
