@@ -2,7 +2,19 @@
 {% block main %}
 {% autoescape true %}
 
-index
+
+<div id="library-header">
+<ul class="rollover boxed tabs">
+  {% if category == 'music' %}
+  <li class="active">
+  {% else %}
+  <li>
+  {% endif %}
+    <a href="{{ url_for('home', category='music') }}">Music</a>
+  </li>
+
+</ul>
+</div>
 
 {% endautoescape %}
 {% endblock %}

@@ -73,29 +73,39 @@ def register():
             return redirect(url_for('login'))
     return render_template('register.html')
 
-@app.route('/music')
-def music():
-    ''' Shows the main music page '''
-    raise NotImplementedError
-
-@app.route('/tv')
-def tv():
-    ''' Shows the main tv page '''
-    raise NotImplementedError
-
-@app.route('/movies')
-def movies():
-    ''' Shows the main movies page '''
-    raise NotImplementedError
-
-@app.route('/user')
-def user():
-    ''' Shows the user preferences '''
-    raise NotImplementedError
-
 @app.route('/')
 def home():
+    if not g.user:
+        return redirect(url_for('login'))
+    else:
+        return redirect(url_for('locker', category='music'))
+
+@app.route('/<category>')
+def locker(category):
     '''Homepage'''
     if not g.user:
         return redirect(url_for('login'))
-    return render_template("index.html", username=g.user['username'])
+    # TODO(tal): list of fetches
+    fetches = []
+    return render_template("index.html", username=g.user['username'],
+                           category=category, fetches=fetches)
+
+@app.route('/search/music')
+def music():
+    ''' Shows the main music page '''
+    if not g.user:
+        return redirect(url_for('login'))
+    if request.args.get('query'):
+        query = request.args.get('query')
+        # query whatapi, get back result
+        # return render_template('music-search.html')
+        # TODO(tal)
+        raise NotImplementedError
+    else:
+        return render_template('music-landing.html')
+
+
+@app.route('/music/artist')
+def artist():
+    ''' show the artist page. '''
+    raise NotImplementedError

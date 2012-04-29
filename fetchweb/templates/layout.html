@@ -7,55 +7,51 @@
   
   <body>
       <header>
-        <div class="wrapper height60 table">
-          <div class="headercell">
-              <a class="logo" href="{{url_for('home')}}">Fetch</a>
-              <ul class="nav">
-                  <li>
-                      <a href="{{url_for('home')}}">My Fetches</a>
-                  </li>
-                  <li>
-                      <a href="{{url_for('music')}}">Music</a>
-                  </li>
-                  <li>
-                      <a href="{{url_for('tv')}}">TV</a>
-                  </li>
-                  <li>
-                      <a href="{{url_for('movies')}}">Movies</a>
-                  </li>
-              </ul>
-          </div>
-          <div class="headercell">
-              <div class="user">
-                  {% if username is defined %}
-                  <a href="{{url_for('logout')}}" class="userlink">Log Out</a>
-                  <a href="{{url_for('user')}}" class="userlink">{{username}}</a>
-                  {% else %}
-                  <a href="{{url_for('login')}}" class="userlink">Log In</a>
-                  <a href="{{url_for('register')}}" class="userlink">Register</a>
-                  {% endif %}
-              </div>
-          </div>
+        <div class="container clearfix">
+          <a class="site-logo" href="{{ url_for('home') }}">
+            <img src="{{ url_for('static', filename='logo.png') }}">
+          </a>
+          <ul class="navlist headitem">
+            <li>
+              <a href="{{ url_for('home') }}">My Fetches</a>
+            </li>
+            <li>
+              <a href="{{ url_for('music') }}">Music</a>
+            </li>
+          </ul>
+          <ul class="navlist userbox headitem">
+            {% if username is defined %}
+            <li>
+              <a href="#">{{username}}</a>
+            </li>
+            <li>
+              <a href="{{ url_for('logout') }}">Log Out</a>
+            </li>
+            {% else %}
+            <li>
+              <a href="{{ url_for('login') }}" class="userlink">Log In</a>
+            </li>
+            <li>
+              <a href="{{ url_for('register') }}" class="userlink">Register</a>
+            </li>
+            {% endif %}
+          </ul>
         </div>
       </header>
     <div class="container">
-    <div class="wrapper">
       {% with messages = get_flashed_messages() %}
       {% if messages %}
       <div class="small rounded shadow flashes">
         <ul>
-            {% for message in messages %}
-            <li>{{ message }}</li>
-            {% endfor %}
+          {% for message in messages %}
+          <li>{{ message }}</li>
+          {% endfor %}
         </ul>
       </div>    
       {% endif %}
       {% endwith %}
-        
-    {% block main %}
-    {% endblock %}
-    </div>
+      {% block main %}{% endblock %}
     </div>
   </body>
 </html>
-            
+

@@ -2,21 +2,15 @@
 {% block main %}
 {% autoescape true %}
 
-
-
-<div class="headingblock">
-    <div class="medium left">Register</div>
-</div>
-<div class="clear"></div>
 <div class="rounded shadow inputblock">
     <form action method="POST">
-        <div class="small left">Email</div>
+        Email:
         <input tabindex="10" name="email" type="text" class="large">
-        <div class="small left">Name</div>
+        Name:
         <input tabindex="20" name="username" type="text" class="large">
-        <div class="small left">Password</div>
+        Password:
         <input tabindex="30" name="password" type="password" class="large">
-        <div class="small left">Repeat Password</div>
+        Type Password Again:
         <input tabindex="40" name="password2" type="password" class="large">
         <button tabindex="50" type="submit" class="button">Login</button>
     </form>
