@@ -60,6 +60,12 @@ to quick from the current virtualenv::
 
   deactivate
 
+Flask
+=====
+
+Get flask::
+
+  pip install flask
 
 Mocking Framework
 =================
