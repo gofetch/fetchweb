@@ -20,7 +20,7 @@ update aptitude::
 Get Aptitude Dependencies Resolved For Fetch
 ============================================
 
-install build-essential and python distribute
+install build-essential and python distribute::
 
   sudo apt-get install build-essential python-dev python-pip python-distribute
   sudo pip install virtualenv
@@ -30,7 +30,7 @@ install nginx::
 
   sudo apt-get install nginx
 
-install transmission and transmissionrpc-python ::
+install transmission and transmissionrpc-python::
 
   sudo apt-get install transmission-cli transmission-common
   sudo pip install transmissionrpc
