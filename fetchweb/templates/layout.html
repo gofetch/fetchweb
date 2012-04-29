@@ -20,9 +20,9 @@
             </li>
           </ul>
           <ul class="navlist userbox headitem">
-            {% if username is defined %}
+            {% if g.user %}
             <li>
-              <a href="#">{{username}}</a>
+              <a href="#">{{ g.user['username'] }}</a>
             </li>
             <li>
               <a href="{{ url_for('logout') }}">Log Out</a>

@@ -87,8 +87,7 @@ def locker(category):
         return redirect(url_for('login'))
     # TODO(tal): list of fetches
     fetches = []
-    return render_template("index.html", username=g.user['username'],
-                           category=category, fetches=fetches)
+    return render_template("index.html", category=category, fetches=fetches)
 
 @app.route('/search/music')
 def music():
