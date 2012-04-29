@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block main %}
+{% autoescape true %}
+
+<div class="rounded shadow inputblock">
+  <form action method="GET">
+    <input type="text" class="large" name="query" placeholder="search artist...">
+    <button type="submit" class="button">Search</button>
+  </form>
+</div>
+
+{% endautoescape %}
+{% endblock %}
