@@ -1,7 +1,7 @@
 import database
 from flask import flash, g, redirect, render_template, request, session, url_for
 from fetchweb import app
-from werkzeug import check_password_hash, generate_password_hash
+from werkzeug import check_password_hash, generate_password_hash, secure_filename
 
 @app.before_request
 def before_request():
@@ -108,3 +108,20 @@ def music():
 def artist():
     ''' show the artist page. '''
     raise NotImplementedError
+
+@app.route('/upload', methods=['GET', 'POST'])
+def upload():
+    ''' page for self uploaded torrents to system '''
+    if request.method == 'POST':
+        file = request.files['file']
+        url = request.form['torrent-url']
+        if file and file.filename.endswith('.torrent'):
+            filename = secure_filename(file.filename)
+            flash('uploaded file: %s' % filename)
+        elif url:
+            flash('uploaded url: %s' % url)
+        else:
+            flash('Error: nothing fetched, try again!')
+        return redirect(url_for('upload'))
+    return render_template('upload.html')
+
