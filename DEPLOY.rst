@@ -62,17 +62,24 @@ to quick from the current virtualenv::
 
 Session Management
 ==================
+install tmux and screen::
 
   sudo apt-get install tmux screen
 
 RTorrent
 ========
 
+install rtorrent from repo::
+
   sudo apt-get update
   sudo apt-get -y install python-software-properties
   sudo add-apt-repository ppa:patricksissons/rtorrent
   sudo apt-get update
   sudo apt-get install curl unrar-free rtorrent
+
+set up config for it with help from rtorrent.rc in this package::
+
+  mv rtorrent.rc $HOME/.rtorrent.rc
 
 Flask
 =====
