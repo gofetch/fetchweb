@@ -17,27 +17,36 @@ update aptitude::
 
   sudo apt-get update
 
-Get Aptitude Dependencies Resolved For Fetch
-============================================
+Nginx
+=====
+
+dependencies::
+
+  sudo apt-get install libpcre3 libpcre3-dev libpcrecpp0 libssl-dev zlib1g-dev
+
+get nginx source::
+
+  wget http://nginx.org/download/nginx-1.2.0.tar.gz
+  tar -xvf nginx-1.2.0.tar.gz
+
+get mod_zip module for nginx::
+
+  wget  http://mod-zip.googlecode.com/files/mod_zip-1.1.6.tar.gz
+  tar -xvf mod_zip-1.1.6.tar.gz
+
+now build nginx with modules::
+
+  ./configure --with-http_mp4_module --without-pcre --add-module=/path/to/mod_zip
+
+
+Python Environments with virtualenv/virtualenvwrapper
+=====================================================
 
 install build-essential and python distribute::
 
   sudo apt-get install build-essential python-dev python-pip python-distribute
   sudo pip install virtualenv
   sudo pip install virtualenvwrapper
-
-install nginx::
-
-  sudo apt-get install nginx
-
-install transmission and transmissionrpc-python::
-
-  sudo apt-get install transmission-cli transmission-common
-  sudo pip install transmissionrpc
-
-
-Python Environments with virtualenv/virtualenvwrapper
-=====================================================
 
 create directory which will hold all your virtualenvs::
 
