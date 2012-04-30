@@ -60,6 +60,20 @@ to quick from the current virtualenv::
 
   deactivate
 
+Session Management
+==================
+
+  sudo apt-get install tmux screen
+
+RTorrent
+========
+
+  sudo apt-get update
+  sudo apt-get -y install python-software-properties
+  sudo add-apt-repository ppa:patricksissons/rtorrent
+  sudo apt-get update
+  sudo apt-get install curl unrar-free rtorrent
+
 Flask
 =====
 
