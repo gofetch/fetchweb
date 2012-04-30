@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block main %}
+{% autoescape true %}
+
+<div class="rounded shadow inputblock">
+  <form action method="POST" enctype="multipart/form-data">
+    Torrent file: <input type="file" name="file">
+    <div class="large">Torrent URL:</div>
+    <input type="text" name="torrent-url" class="large"
+           placeholder="paste url here...">
+    <button type="submit" class="button">Submit</button>
+  </form>
+</div>
+
+{% endautoescape %}
+{% endblock %}
