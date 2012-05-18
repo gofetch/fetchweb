@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+
+{% block searchbar %}
+<div id="searchbar">
+  <form action method="GET">
+    <input type="text" name="query" placeholder="Search Artists and Albums..."
+           value="{{ query }}">
+    <button type="submit" class="button">Search</button>
+  </form>
+</div>
+{% endblock %}
+
+{% block main %}
+{% autoescape false %}
+<div class="search-results">
+
+  <div class="subheader">
+    <h2>Artists</h2>
+  </div>
+  <div class="result-box">
+    <ul class="clearfix">
+      {% for artist in results.artists %}
+      <li class="music-result">
+        <h3>
+          <a href="/search/music?query={{ artist }}">
+            <img src="http://pea.rs/wp-content/themes/pears/images/thumb.png">
+            <span class="artistname">{{ artist }}</span>
+          </a>
+        </h3>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="subheader">
+    <h2>Albums</h2>
+  </div>
+  <div class="result-box">
+    <ul class="clearfix">
+      {% for r in results.albums %}
+      <li class="music-result">
+        <h3>
+          <a href="/music/item/{{ r.groupId }}">
+            <img src="http://pea.rs/wp-content/themes/pears/images/thumb.png">
+            <span class="truncate">{{ r.name }}</span>
+          </a>
+        </h3>
+        <a class="truncate" href="/search/music?query={{ r.artist }}">
+          {{ r.artist }}
+        </a>
+        <div><a href="#" class="button fetch-button small">Fetch</a></div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+</div>
+
+<script type="text/javascript" src="{{ url_for('static', filename='lastfm.api.md5.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='lastfm.api.js') }}"></script>
+<script>
+var lastfm = new LastFM({
+apiKey    : '27bcddc9fb7773f18bd5591359f53fc1',
+apiSecret : '4ba2c0ab2587e251909d0dca10d1c400',
+});
+
+window.onload = function(e) {
+  artists = document.getElementsByClassName('artistname')
+  for(i in artists){
+    name = artists[i].innerHTML;
+    lastfm.artist.getInfo({artist: name}, {success: function(data){
+      for(i in artists){
+        if(artists[i].innerHTML == data.artist.name){
+          artists[i].previousElementSibling.src = data.artist.image[2]['#text']
+        }
+      }
+    }});
+  }
+}
+</script>
+{% endautoescape %}
+{% endblock %}

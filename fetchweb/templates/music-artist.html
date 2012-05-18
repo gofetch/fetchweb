@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block main %}
+{% autoescape false %}
+<div id="topbar">
+  <div class="card">
+    <div id="cardimage">
+      <img src="{{ artist.response.image }}">
+    </div>
+    <h2> {{ artist.response.name }} </h2>
+  </div>
+  <div class="card" id="bio">
+    <p>{{ artist.response.body }}</p>
+  </div>
+  <div class="card last" id="metadata">
+    <div id="simartists">
+      <ul>
+        {% for sim in artist.response.similarArtists %}
+        <li>
+          <a href="/music/artist/{{ sim.artistId }}" class="truncate">{{ sim.name }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div id="tags">
+      <ul>
+        {% for tag in artist.response.tags %}
+        <li class="truncate">{{ tag.name }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>
+
+<div class="res">
+  <div class="subheader">
+    <h2>Albums</h2>
+  </div>
+  <div class="result-box">
+    <ul class="clearfix">
+      {% for release in artist.response.torrentgroup %}
+      <li class="music-result">
+        <h3>
+          <a href="/music/item/{{ release.groupId 
+}}">
+            <img src="http://pea.rs/wp-content/themes/pears/images/thumb.png">
+            <span class="truncate">{{ release.groupName }}</span>
+          </a>
+        </h3>
+        {{ release.groupYear }}
+        <div><a href="#" class="button fetch-button small">Fetch</a></div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+{% endautoescape %}
+{% endblock %}

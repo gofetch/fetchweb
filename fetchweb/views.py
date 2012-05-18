@@ -1,7 +1,14 @@
+# -*- coding: utf-8 -*-
+
 import database
 from flask import flash, g, redirect, render_template, request, session, url_for
 from fetchweb import app
 from werkzeug import check_password_hash, generate_password_hash, secure_filename
+import json
+import msgpackrpc
+
+from werkzeug.contrib.cache import SimpleCache
+cache = SimpleCache()
 
 @app.before_request
 def before_request():
@@ -13,6 +20,8 @@ def before_request():
     if 'uid' in session:
         g.user = database.query_db('select * from users where uid = ?',
                           [session['uid']], one=True)
+    g.whatapi = msgpackrpc.Client(msgpackrpc.Address("localhost", 18800), timeout=20)
+
 
 @app.teardown_request
 def teardown_request(exception):
@@ -95,19 +104,38 @@ def music():
     if not g.user:
         return redirect(url_for('login'))
     if request.args.get('query'):
-        query = request.args.get('query')
-        # query whatapi, get back result
-        # return render_template('music-search.html')
-        # TODO(tal)
-        raise NotImplementedError
+        query = request.args.get('query').lower()
+        # try to find artist
+        artist_id = g.whatapi.call('get_artist_id',query)
+        if artist_id:
+            return redirect(url_for('artist', artist_id=artist_id))
+        # search torrent groups
+        whatsearch = g.whatapi.call('search', query)
+        results = whatsearch['response']['results']
+        artists = set([])
+        releases = []
+        for r in results:
+            if r.has_key('groupName') and r.has_key('artist'):
+                artists |= set([r['artist']])
+                releases.append({'name':r['groupName'], 'artist':r['artist'],
+                                 'groupId':r['groupId']})
+        temp = {'artists': artists, 'albums': releases}
+        return render_template('music-search.html', query=query, results=temp)
     else:
         return render_template('music-landing.html')
 
-
-@app.route('/music/artist')
-def artist():
+@app.route('/music/artist/<artist_id>')
+def artist(artist_id):
     ''' show the artist page. '''
-    raise NotImplementedError
+    res = g.whatapi.call('get_artist', artist_id)
+    return render_template('music-artist.html', artist=res)
+
+@app.route('/music/item/<item_id>')
+def musicitem(item_id):
+    ''' show the item page. '''
+    res = g.whatapi.call('torrentgroup', item_id)
+    return render_template('music-item.html', group = res)
+
 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():
@@ -124,4 +152,11 @@ def upload():
             flash('Error: nothing fetched, try again!')
         return redirect(url_for('upload'))
     return render_template('upload.html')
+
+
+@app.template_filter('fileStringToList')
+def stringToList(liststr):
+    sep = liststr.split("|||")
+    filelist = [s.split('{{{') for s in sep]
+    return [{'name':name, 'size':size.strip('}')} for (name, size) in filelist]
 

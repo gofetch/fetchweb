@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block main %}
+{% autoescape false %}
+
+<div class="subheader">
+  <h2> {{ group.response.group.name }}</h2>
+</div>
+
+<div id="itemsidebar">
+  <div class="card">
+    <img src="{{ group.response.group.wikiImage }}">
+    <h2>{{ group.response.group.name }} </h2>
+  </div>
+
+  <div class="card" id="fetchcard">
+    <a href="#" class="button fetch-button">Fetch</a>
+    <a href="#" class="button unfetch-button">Let Go</a>
+    <a href="#" class="button download-button">Download Zip</a>
+  </div>
+
+  <div class="card" id="artistcard">
+    <h2>Artists</h2>
+    <ul>
+      {% for artist in group.response.group.musicInfo.artists %}
+      <li><a href="/music/artist/{{ artist.id }}">{{ artist.name }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+
+</div>
+
+<div class="mainbox tablewrapper">
+  {% set torrent = group.response.torrents[0] %}
+  <table id="fetchtable">
+    <tr>
+      <th>{{ torrent.filePath }}</th>
+      <th style="float:right;">size</th>
+    </tr>
+    {% for file in torrent.fileList | fileStringToList %}
+    <tr>
+      <td>{{ file.name }}</td>
+      <td>{{ (file.size|int / 1048576)|round(2) }} MB</td>
+    </tr>
+    {% endfor %}
+    <tr style="height: 100%;"><td></td><td></td></tr>
+  </table>
+</div>
+
+{% endautoescape %}
+{% endblock %}

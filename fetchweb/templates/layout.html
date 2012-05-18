@@ -1,6 +1,8 @@
 <html>
   <head>
     <title>Fetch</title>
+    <link rel="shortuct icon"
+          href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="stylesheet" type="text/css"
           href="{{ url_for('static', filename='fetch.css') }}"/>
   </head>
@@ -42,6 +44,7 @@
           </ul>
         </div>
       </header>
+    {% block searchbar %}{% endblock %}
     <div class="container">
       {% with messages = get_flashed_messages() %}
       {% if messages %}
