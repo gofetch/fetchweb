@@ -27,9 +27,11 @@ def get_user_id(email=None, username=None):
         rv = g.db.execute('select uid from users where email = ? and username=?',
                       [email, username]).fetchone()
     elif email:
-        rv = g.db.execute('select uid from users where email = ?', [email]).fetchone()
+        rv = g.db.execute('select uid from users where email = ?',
+                          [email]).fetchone()
     elif username:
-        rv = g.db.execute('select uid from users where username = ?', [username]).fetchone()
+        rv = g.db.execute('select uid from users where username = ?',
+                          [username]).fetchone()
     else:
         return None
     return rv[0] if rv else None

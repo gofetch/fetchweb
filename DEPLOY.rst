@@ -22,7 +22,8 @@ Nginx
 
 dependencies::
 
-  sudo apt-get install libpcre3 libpcre3-dev libpcrecpp0 libssl-dev zlib1g-dev
+  sudo apt-get install libpcre3 libpcre3-dev libpcrecpp0 \
+      libssl-dev zlib1g-dev openssl apache2-utils libssl-dev
 
 get nginx source::
 
@@ -36,7 +37,9 @@ get mod_zip module for nginx::
 
 now build nginx with modules::
 
-  ./configure --with-http_mp4_module --without-pcre --add-module=/path/to/mod_zip
+  ./configure --with-http_mp4_module  \
+      --with-http_ssl_module --with-http_dav_module --add-module=$HOME/sources/mod_zip-1.1.6 \
+      --prefix=$HOME/nginx
 
 
 Python Environments with virtualenv/virtualenvwrapper
